@@ -1,14 +1,23 @@
-from src.sort import InsertionSort
+import unittest
+from sort.insertion_sort import InsertionSort
 
-def main():
-    data = [64, 34, 25, 12, 22, 11, 90, 88, 76, 55, 43, 21, 99, 77, 66]
-    insertion_sort = InsertionSort(data)
-    print("Sorting steps:")
-    insertion_sort.print_step_by_step()
-    insertion_sort.sort()
-    sorted_data = insertion_sort.get_sorted_data()
-    print("\nSorted data:", sorted_data)
-    is_sorted = insertion_sort.is_sorted()
-    print("Is data sorted?", is_sorted)
-if __name__ == "__main__":
-    main()
+class TestInsertionSort(unittest.TestCase):
+
+    def test_insertion_sort(self):
+        data = [5, 2, 9, 1, 5, 6]
+        expected = [1, 2, 5, 5, 6, 9]
+        sorter = InsertionSort(data)
+        sorter.sort()
+        sorted_data = sorter.get_sorted_data()
+        self.assertEqual(sorted_data, expected)
+
+    def test_insertion_sort_is_sorted(self):
+        data = [5, 2, 9, 1, 5, 6]
+        sorter = InsertionSort(data)
+        sorter.sort()
+        self.assertTrue(sorter.is_sorted())
+
+
+if __name__ == '__main__':
+    unittest.main()
+

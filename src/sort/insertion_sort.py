@@ -25,6 +25,11 @@ class InsertionSort:
             self.data[j + 1] = key
             print(f"Step {i}: {self.data}")
 
-    def is_sorted(self):
+    # def is_sorted(self):
+    #     return all(self.data[i] <= self.data[i + 1] for i in range(len(self.data) - 1))
 
-        return all(self.data[i] <= self.data[i + 1] for i in range(len(self.data) - 1))
+    def is_sorted(self):
+        for i in range(len(self.data) - 1):
+            if self.data[i] > self.data[i + 1]:
+                return False
+        return True
