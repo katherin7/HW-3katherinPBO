@@ -1,14 +1,16 @@
-def quick_sort(arr):
-    if len(arr) <= 1:
-        return arr
-    else:
-        pivot = arr[len(arr) // 2]
-        left = [x for x in arr if x < pivot]
-        middle = [x for x in arr if x == pivot]
-        right = [x for x in arr if x > pivot]
-        return quick_sort(left) + middle + quick_sort(right)
+class Quicksort:
+    def __init__(self,arr):
+        self.arr = arr
+        pass
 
-arr = [3, 6, 8, 10, 1, 2, 1]
-print("Array sebelum diurutkan:", arr)
-sorted_arr = quick_sort(arr)
-print("Array setelah diurutkan:", sorted_arr)
+    def quicksort(self, arr):
+        """
+        Fungsi ini mengurutkan array menggunakan algoritma quicksort.
+        """
+        if len(arr) <= 1:
+            return arr
+        else:
+            pivot = arr[0]
+            less_than_pivot = [x for x in arr[1:] if x <= pivot]
+            greater_than_pivot = [x for x in arr[1:] if x > pivot]
+            return self.quicksort(less_than_pivot) + [pivot] + self.quicksort(greater_than_pivot)
